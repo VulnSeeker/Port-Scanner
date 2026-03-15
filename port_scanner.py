@@ -121,7 +121,7 @@ logger = logging.getLogger(__name__)
 
 class ProfessionalPortScanner:
     """
-    Professional enterprise-grade port scanner with advanced features
+    Enterprise-grade port scanner with advanced features
     """
     
     # Common service signatures
