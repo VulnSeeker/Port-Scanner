@@ -66,7 +66,7 @@ Low (0.5)       → Other services
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    YOUR COMMAND                          │
+│                 COMMAND                                 │
 │  $ python scanner.py 192.168.1.1 -p 1-1000              │
 └─────────────────────────────────────────────────────────┘
                               │
@@ -133,7 +133,7 @@ Low (0.5)       → Other services
 ### ⚡ Multi-threading Architecture
 
 ```
-                    YOUR COMMAND
+                      COMMAND
                          │
                          ▼
               ┌─── SCAN MANAGER ──┐
@@ -161,40 +161,40 @@ Low (0.5)       → Other services
 ### Basic Scanning
 ```bash
 # Scan common ports on localhost
-python scanner.py 127.0.0.1 -p 22,80,443
+python port_scanner.py 127.0.0.1 -p 22,80,443
 
 # Scan port range
-python scanner.py 192.168.1.1 -p 1-1000
+python port_scanner.py 192.168.1.1 -p 1-1000
 
 # Verbose output
-python scanner.py scanme.nmap.org -p 22,80 -v
+python port_scanner.py scanme.nmap.org -p 22,80 -v
 ```
 
 ### Advanced Scanning
 ```bash
 # SYN stealth scan (requires root)
-sudo python scanner.py 192.168.1.1 -p 1-1000 -t tcp_syn --stealth
+sudo python port_scanner.py 192.168.1.1 -p 1-1000 -t tcp_syn --stealth
 
 # UDP scan
-sudo python scanner.py 8.8.8.8 -p 53,123,161 -t udp
+sudo python port_scanner.py 8.8.8.8 -p 53,123,161 -t udp
 
 # Network range scan
-python scanner.py 192.168.1.0/24 -p 22,80,445
+python port_scanner.py 192.168.1.0/24 -p 22,80,445
 
 # Performance tuning (200 threads)
-python scanner.py target.com -p 1-1000 -T 200 --timeout 1
+python port_scanner.py target.com -p 1-1000 -T 200 --timeout 1
 ```
 
 ### Output Formats
 ```bash
 # JSON output
-python scanner.py 127.0.0.1 -p 22,80 -f json -o scan.json
+python port_scanner.py 127.0.0.1 -p 22,80 -f json -o scan.json
 
 # CSV for spreadsheets
-python scanner.py 127.0.0.1 -p 22,80 -f csv -o scan.csv
+python port_scanner.py 127.0.0.1 -p 22,80 -f csv -o scan.csv
 
 # HTML report
-python scanner.py 127.0.0.1 -p 1-100 -f html -o report.html
+python port_scanner.py 127.0.0.1 -p 1-100 -f html -o report.html
 ```
 
 
