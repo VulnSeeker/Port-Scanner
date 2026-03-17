@@ -72,46 +72,46 @@ Low (0.5)       → Other services
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────┐
-│  1. HOST DISCOVERY                                       │
-│     • Is the target alive?                               │
-│     • Uses ICMP ping, TCP ping, ARP                      │
-│     • Saves time by not scanning dead hosts              │
+│  1. HOST DISCOVERY                                      │
+│     • Is the target alive?                              │
+│     • Uses ICMP ping, TCP ping, ARP                     │
+│     • Saves time by not scanning dead hosts             │
 └─────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────┐
-│  2. PORT SCANNING                                         │
-│     • Opens multiple threads (like 100 detectives)       │
-│     • Each thread checks different ports                 │
-│     • TCP Connect: "Hello, anyone there?"                │
-│     • SYN Stealth: Half-handshake (quieter)              │
+│  2. PORT SCANNING                                       │
+│     • Opens multiple threads (like 100 detectives)      │
+│     • Each thread checks different ports                │
+│     • TCP Connect: "Hello, anyone there?"               │
+│     • SYN Stealth: Half-handshake (quieter)             │
 └─────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────┐
-│  3. SERVICE DETECTION                                     │
-│     • When port responds, ask "Who are you?"             │
-│     • Send specific probes based on port                 │
-│     • Read banner: "I'm Apache 2.4.41"                   │
-│     • Extract version numbers                             │
+│  3. SERVICE DETECTION                                   │
+│     • When port responds, ask "Who are you?"            │
+│     • Send specific probes based on port                │
+│     • Read banner: "I'm Apache 2.4.41"                  │
+│     • Extract version numbers                           │
 └─────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────┐
-│  4. VULNERABILITY SCORING                                 │
-│     • FTP (port 21) → High risk (9.0)                    │
-│     • Telnet (23) → Critical (9.0)                       │
-│     • SSH (22) → Medium (4.0)                             │
-│     • Old versions get higher scores                      │
+│  4. VULNERABILITY SCORING                               │
+│     • FTP (port 21) → High risk (9.0)                   │
+│     • Telnet (23) → Critical (9.0)                      │
+│     • SSH (22) → Medium (4.0)                           │
+│     • Old versions get higher scores                    │
 └─────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────┐
-│  5. REPORT GENERATION                                     │
-│     • Beautiful tables with colors                        │
-│     • JSON for automation                                 │
-│     • HTML reports for management                         │
-│     • CSV for spreadsheets                                │
+│  5. REPORT GENERATION                                   │
+│     • Beautiful tables with colors                      │
+│     • JSON for automation                               │
+│     • HTML reports for management                       │
+│     • CSV for spreadsheets                              │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -136,10 +136,10 @@ Low (0.5)       → Other services
                     YOUR COMMAND
                          │
                          ▼
-              ┌─── SCAN MANAGER ───┐
-              │   Thread Pool       │
-              │   (100 threads)     │
-              └──────────┬──────────┘
+              ┌─── SCAN MANAGER ──┐
+              │   Thread Pool     │
+              │   (100 threads)   │
+              └──────────┬────────┘
                          │
         ┌───────────────┼───────────────┐
         ▼               ▼               ▼
