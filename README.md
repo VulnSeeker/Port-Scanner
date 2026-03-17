@@ -71,15 +71,15 @@ The Five Step Investigation Process
 │﻿﻿﻿﻿﻿﻿﻿﻿﻿COMMAND﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿│
 │﻿$ python scanner.py 192.168.1.1 -p 1-1000﻿﻿﻿﻿﻿﻿﻿│
 └─────────────────────────────────────────────────────────┘
-│
+|
 ▼
 ┌─────────────────────────────────────────────────────────┐
-│﻿1. HOST DISCOVERY﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿│
+ 1. HOST DISCOVERY﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 Does the person still have a pulse? That one matters most right now
 Uses ICMP ping TCP ping ARP
 Instead of wasting minutes on lifeless machines, skip straight ahead. One less thing slowing you down happens when nothing answers back. Jump past the silence because waiting serves no purpose here. Move faster since unresponsive systems bring zero value anyway
 └─────────────────────────────────────────────────────────┘
-│
+|
 ▼
 ┌─────────────────────────────────────────────────────────┐
 │﻿2. PORT SCANNING﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿│
@@ -250,10 +250,3 @@ Found something helpful here? A star on the repo makes a difference for people l
 
 ---
 
-
-
-
-
-"Know your network. Secure your future."
-
-Back to Top
