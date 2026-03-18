@@ -264,13 +264,6 @@ Vulnerability Assessment:
 
 ## ⚠️ Security Considerations
 
-### Legal Compliance
-- Unauthorized port scanning may violate:
-  - Computer Fraud and Abuse Act (CFAA) in the US
-  - Computer Misuse Act in the UK
-  - Similar legislation in other jurisdictions
-- Always obtain written authorization before scanning
-
 ### Operational Guidelines
 1. **Authorization Required** - Only scan systems you own or have permission to test
 2. **Rate Limiting** - Use `--stealth` and appropriate thread counts to avoid DoS
