@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
-Professional Enterprise-Grade Port Scanner
-Author: Security Professional
-Version: 2.0.0
+Enterprise-Grade Port Scanner
+Author: Mubbshra Iqbal
 Description: Advanced port scanner with service detection, OS fingerprinting,
              multiple scan techniques, and professional reporting.
 """
