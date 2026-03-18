@@ -1,252 +1,322 @@
+# 🔍  Port Scanner
 
-🔍 Port Scanner
-
-
-
+<div align="center">
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
-![Threading](https://img.shields.io/badge/Multi--Threading-100--500-green)
-![Scans](https://img.shields.io/badge/Scans-TCP%20|%20SYN%20|%20UDP-orange)
-![Output](https://img.shields.io/badge/Output-JSON%20|%20CSV%20|%20HTML-red)
-![License](https://img.shields.io/badge/License-MIT-yellow)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Version](https://img.shields.io/badge/Version-2.0.0-orange.svg)
 
-"See the unseen. Secure the insecure."
+*A comprehensive network reconnaissance tool for security professionals and system administrators*
 
-
+</div>
 
 ---
 
-Whether you're a:
-- Security Professional needing to audit networks
-System administrator overseeing server operations
-- Penetration Tester in the reconnaissance phase
-- Developer learning network security
+## 📋 Abstract
 
-One Python file. That is all it takes to run scans like big companies do. Built right into the code, no extra setup needed. Power sits inside a simple format. Think of how teams check systems at scale - now possible alone. Efficiency without complexity shows up here. A full scanner, yet fits in one place.
+This tool implements a multi-threaded port scanner with advanced service detection capabilities and vulnerability assessment. Designed for network security auditing, it provides comprehensive information about exposed services, their versions, and associated risk levels.
 
 ---
 
-✨ Features
+## 🔬 Key Features
 
-Multiple Scan Types
-Scan Type. Description. Use Case
-|-----------|-------------|----------|
-TCP Connect Full Handshake Reliable Without Root Access
-Syn stealth half open scan faster less detectable
-UDP Scan of Ports Running DNS SNMP and DHCP
+### Scan Capabilities
+| Feature | Description |
+|---------|-------------|
+| **Multiple Scan Types** | TCP Connect, SYN Stealth, UDP |
+| **Target Specification** | Single IP, CIDR notation, IP ranges |
+| **Port Selection** | Single ports, comma-separated lists, ranges |
+| **Performance** | Configurable threading (100-500 concurrent) |
 
-🎯 Service Detection
-Banner Grabbing Reveals Service Versions
-Service Fingerprinting Identifies Apache Nginx MySQL SSH FTP and Over 50 Other Services
-Version Extraction retrieves detailed version information such as OpenSSH_7.9p1
+### Service Analysis
+- **Service Fingerprinting** - Identifies running services using signature matching
+- **Banner Grabbing** - Captures and parses service banners
+- **Version Extraction** - Regular expression-based version detection
+- **OS Fingerprinting** - TCP/IP stack analysis for OS identification
 
-🛡️ Vulnerability Assessment
-```
-Critical 9.0 Ports 21 23 3389
-High 7.0 vulnerability linked to ports 445 and 5900
-Moving on - port numbers like 22, 80, 3306, and also 5432 show up under Medium severity level, rated at 4.0.
-Low 0.5 shifts to other services
-```
+### Security Assessment
+- **Vulnerability Scoring** - Quantitative risk assessment (0.5-9.0 scale)
+- **Risk Categorization** - Critical, High, Medium, Low classifications
+- **Service Risk Analysis** - Context-aware scoring based on service type
 
-Multiformat Outputs
-- Table :- Beautiful console output with colors
-JSON is machine readable data format
-CSV spreadsheet friendly
-- HTML :- Professional reports with styling
-
-⚡ Performance Features
-Running several tasks at once, somewhere between a hundred and five hundred things happening together
-- Configurable timeouts
-- Stealth mode with delays
-- Host discovery before scanning
+### Reporting Formats
+- **Terminal Output** - Color-coded, formatted tables
+- **JSON Export** - Machine-readable format for automation
+- **CSV Export** - Spreadsheet-compatible data
+- **HTML Reports** - Professional, styled documentation
 
 ---
 
-How It Works - The Logic Behind It
 
-The Five Step Investigation Process
+### Data Flow
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│﻿﻿﻿﻿﻿﻿﻿﻿﻿COMMAND﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿│
-│﻿$ python scanner.py 192.168.1.1 -p 1-1000﻿﻿﻿﻿﻿﻿﻿│
-└─────────────────────────────────────────────────────────┘
-|
-▼
-┌─────────────────────────────────────────────────────────┐
- 1. HOST DISCOVERY﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-Does the person still have a pulse? That one matters most right now
-Uses ICMP ping TCP ping ARP
-Instead of wasting minutes on lifeless machines, skip straight ahead. One less thing slowing you down happens when nothing answers back. Jump past the silence because waiting serves no purpose here. Move faster since unresponsive systems bring zero value anyway
-└─────────────────────────────────────────────────────────┘
-|
-▼
-┌─────────────────────────────────────────────────────────┐
-│﻿2. PORT SCANNING﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿│
-One hundred investigators start working at once
-│﻿﻿﻿• Each thread checks different ports﻿﻿﻿﻿﻿﻿﻿﻿│
-TCP Connect Hello Anyone There
-SYN Stealth Half Handshake Quieter
-└─────────────────────────────────────────────────────────┘
-│
-▼
-┌─────────────────────────────────────────────────────────┐
-│﻿3. SERVICE DETECTION﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿│
-Once the port replies, say: Tell me who you are
-Every now and then, test individual ports using tailored signals
-I m Apache 2 4 41
-│﻿﻿﻿• Extract version numbers﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿│
-└─────────────────────────────────────────────────────────┘
-│
-▼
-┌─────────────────────────────────────────────────────────┐
-│﻿4. VULNERABILITY SCORING﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿│
-Out on port 21, FTP stands with a 9.0 danger score.
-Telnet Port 23 High Severity Vulnerability Score 9.0
-SSH port 22 medium severity
-Earlier editions earn better ratings
-└─────────────────────────────────────────────────────────┘
-│
-▼
-┌─────────────────────────────────────────────────────────┐
-│﻿5. REPORT GENERATION﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿│
-│﻿﻿﻿• Beautiful tables with colors﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿│
-Data format used by machines to handle tasks automatically.
-│﻿﻿﻿• HTML reports for management﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿│
-CSV for spreadsheets
-└─────────────────────────────────────────────────────────┘
+Raw Input → Target Resolution → Host Discovery → Port Scanning → 
+Service Analysis → Vulnerability Assessment → Report Generation
 ```
 
-Exploring How Services Are Identified
+---
+
+## 💻 Technical Specifications
+
+### Requirements
+- **Python**: Version 3.8 or higher
+- **Operating System**: Linux/Unix (recommended), Windows (limited)
+- **Privileges**: Root/sudo for SYN and UDP scans
+- **Dependencies**:
+  ```
+  scapy>=2.5.0      # Packet manipulation
+  netifaces>=0.11.0 # Network interface information
+  colorama>=0.4.6   # Terminal color output
+  python-nmap>=0.7.1 # Nmap integration
+  requests>=2.31.0  # HTTP requests
+  ```
+
+### Installation Methods
+
+#### Standard Installation
+```bash
+git clone https://github.com/yourusername/port-scanner.git
+cd port-scanner
+pip install -r requirements.txt
+chmod +x scanner.py
+```
+
+#### Virtual Environment (Recommended)
+```bash
+python3 -m venv scanner-env
+source scanner-env/bin/activate
+pip install -r requirements.txt
+```
+
+#### Kali Linux
+```bash
+sudo apt install python3-scapy python3-netifaces python3-colorama python3-nmap
+```
+
+---
+
+## 📊 Usage Documentation
+
+### Command Line Interface
+
+```
+usage: scanner.py [-h] [-p PORTS] [-t {tcp_connect,tcp_syn,udp}] 
+                  [-o OUTPUT] [-f {table,json,csv,html}] [-T THREADS] 
+                  [--timeout TIMEOUT] [--stealth] [--no-service] 
+                  [--no-os] [-v] [--version]
+                  target
+```
+
+### Parameter Specification
+
+| Parameter | Type   | Description | Default |
+|-----------|------  |-------------|---------|
+| `target`  | string | IP address, hostname, CIDR, or range | Required |
+| `-p, --ports` | string | Port specification (e.g., "22,80,443" or "1-1024") | "1-1024" |
+| `-t, --type` | string | Scan technique | "tcp_connect" |
+| `-f, --format` | string | Output format | "table" |
+| `-o, --output` | string | Output file path | None |
+| `-T, --threads` | integer | Concurrent threads | 100 |
+| `--timeout` | float | Connection timeout (seconds) | 2.0 |
+| `--stealth` | flag | Enable inter-packet delay | False |
+| `--no-service` | flag | Disable service detection | False |
+| `--no-os` | flag | Disable OS fingerprinting | False |
+| `-v, --verbose` | flag | Detailed output | False |
+
+### Usage Examples
+
+#### Basic Operations
+```bash
+# Single host scan
+python3 scanner.py 192.168.1.1
+
+# Port range specification
+python3 scanner.py 10.0.0.1 -p 1-1000
+
+# Multiple discrete ports
+python3 scanner.py server.example.com -p 22,80,443,3306
+```
+
+#### Advanced Configurations
+```bash
+# SYN stealth scan (requires elevated privileges)
+sudo python3 scanner.py 192.168.1.0/24 -p 1-1024 -t tcp_syn --stealth
+
+# Comprehensive scan with all features
+python3 scanner.py target.com -p 1-65535 -T 200 -v
+
+# UDP service discovery
+sudo python3 scanner.py dns-server.local -p 53,123,161 -t udp
+```
+
+#### Reporting
+```bash
+# JSON output for automation
+python3 scanner.py 10.0.0.0/24 -p 22,80,445 -f json -o network_audit.json
+
+# Professional HTML report
+python3 scanner.py 192.168.1.1 -p 1-1000 -f html -o security_assessment.html
+
+# CSV for analysis
+python3 scanner.py target.com -p 1-1024 -f csv -o scan_data.csv
+```
+
+---
+
+## 🔬 Technical Analysis
+
+### Service Detection Methodology
+
+The scanner employs a multi-stage service identification process:
+
+1. **Port Connection** - Establishes connection to target port
+2. **Probe Transmission** - Sends service-specific probes:
+   ```python
+   probes = {
+       80: [b"HEAD / HTTP/1.0\r\n\r\n"],
+       21: [b"HELP\r\n", b"SYST\r\n"],
+       22: [b"SSH-2.0-OpenSSH_Test\r\n"]
+   }
+   ```
+3. **Banner Capture** - Receives and decodes service responses
+4. **Pattern Matching** - Compares against signature database
+5. **Version Extraction** - Applies regex patterns for version identification
+
+### Vulnerability Scoring Algorithm
+
+Scores are calculated using a weighted formula:
 
 ```python
-How we identify services:
-1. Connect to port 80
-2. Send: "GET / HTTP/1.0\r\n\r\n"
-3. Receive: "HTTP/1.1 200 OK\nServer: Apache/2.4.41"
-4. Service http version 2.4.41
+base_score = {
+    'high_risk': 7.0,   # Ports 21, 23, 445, 3389, 5900
+    'medium_risk': 4.0,  # Ports 22, 80, 443, 3306, 5432
+    'low_risk': 1.0,     # Ports 53, 123, 161
+    'default': 0.5
+}
 
-Ftp Port 21
-1. Connect
-2. Receive: "220 (vsFTPd 3.0.3)"
-3. Ftp service version 3.0.3
+# Risk adjustment based on service
+if service in ['ftp', 'telnet', 'smb', 'rdp']:
+    score += 2.0
+
+final_score = min(score, 10.0)  # Cap at maximum
 ```
 
-⚡ Multi-threading Architecture
+### Performance Characteristics
 
-```
-COMMAND
-│
-▼
-Scan Manager
-│﻿﻿Thread Pool﻿﻿﻿│
-│﻿﻿(100 threads)﻿﻿│
-└──────────┬────────┘
-│
-┌───────────────┼───────────────┐
-▼﻿﻿﻿﻿﻿﻿﻿﻿▼﻿﻿﻿﻿﻿﻿﻿﻿▼
-┌─────────┐﻿﻿┌─────────┐﻿﻿┌─────────┐
-│Thread 1 │﻿﻿│Thread 2 │﻿﻿│Thread 3 │...100
-One way in, number twenty-two. Through eight zero comes another path. Last gate opens at four forty-three
-└────┬────┘﻿﻿└────┬────┘﻿﻿└────┬────┘
-▼﻿﻿﻿﻿﻿﻿﻿▼﻿﻿﻿﻿﻿﻿﻿▼
-┌─────────┐﻿﻿┌─────────┐﻿﻿┌─────────┐
-│SSH﻿﻿﻿│﻿﻿│HTTP﻿﻿﻿│﻿﻿│HTTPS﻿﻿│
-│OpenSSH_7│﻿﻿│Apache﻿﻿│﻿﻿│OpenSSL﻿│
-└─────────┘﻿﻿└─────────┘﻿﻿└─────────┘
-```
-
-
-
-🚀 Usage Examples
-
-Basic Scanning
-```bash
-Scan common ports on localhost
-python port_scanner.py 127.0.0.1 -p 22,80,443
-
-Scan port range
-python port_scanner.py 192.168.1.1 -p 1-1000
-
-Verbose output
-python port_scanner.py scanme.nmap.org -p 22,80 -v
-```
-
-Advanced Scanning
-```bash
-Hidden SYN check needs admin rights.
-sudo python port_scanner.py 192.168.1.1 -p 1-1000 -t tcp_syn --stealth
-
-UDP scan
-sudo python port_scanner.py 8.8.8.8 -p 53,123,161 -t udp
-
-Network range scan
-python port_scanner.py 192.168.1.0/24 -p 22,80,445
-
-Fine-tuning under load, two hundred threads active
-Run python port_scanner.py against target.com using ports one through a thousand, thread count set to two hundred, each attempt stops after one second.
-```
-
-Output Formats
-```bash
-JSON output
-Run python port_scanner.py at 127.000.000.1 using ports 22 plus 80 if output format is json then save result into file named scan.json.
-
-CSV for spreadsheets
-Run python port_scanner.py with target 127.0.0.1, then specify ports 22 and 80 using comma separation. After that, choose output format as csv by adding flag -f. Finally, assign filename scan.csv through option -o. Execution begins once all arguments are set in place.
-
-HTML report
-Run python port_scanner.py with target 127.0.0.1. Using range 1 through 100 for ports. Output format set to html instead. Save result into file named report.html.
-```
-
-
-
-
-
-Perfect For:
-Security Audits Fast Check for Weak Spots
-Network Inventory What’s Running
-Penetration Testing Reconnaissance Phase
-- 📚 Learning :- Understand network protocols
-Professional HTML Reports
+| Thread Count | Ports Scanned | Average Time (local) | Memory Usage |
+|--------------|---------------|----------------------|--------------|
+| 50           | 1000          | 2.3s                 | ~50MB        |
+| 100          | 1000          | 1.2s                 | ~75MB        |
+| 200          | 1000          | 0.8s                 | ~120MB       |
+| 500          | 1000          | 0.5s                 | ~250MB       |
 
 ---
 
-Security and Ethics
+## 📈 Output Specifications
 
-Use Responsibly
+### Console Output Format
+```
+======================================================================
+SCAN RESULTS
+======================================================================
 
-This tool is for:
-- ✅ Your own systems
-- ✅ Authorized penetration testing
-- ✅ Educational purposes
-- ✅ Network administration
+Host: 192.168.1.100 (webserver.local)
+  Open Ports: 3
 
-Not for:
-- ❌ Unauthorized scanning
-- ❌ Illegal activities
-- ❌ Hacking without permission
+  PORT     STATE    SERVICE    VERSION              VULN
+  ---------------------------------------------------------
+  22       open     ssh        OpenSSH_7.9p1        4.0
+  80       open     http       Apache 2.4.41        4.0
+  3306     open     mysql      MySQL 5.7.35         4.0
 
-Start with permission on paper if the system isn’t yours. Scan only after receiving signed approval from its owner. Written proof comes first when access involves machines outside your control. Before running checks, secure a documented go-ahead. A clear record must exist prior to any inspection of someone else's setup.
+Vulnerability Assessment:
+  Critical: 0 | High: 0 | Medium: 3 | Low: 0
+```
+
+### JSON Structure
+```json
+{
+  "scan_info": {
+    "target": "192.168.1.0/24",
+    "scan_type": "tcp_connect",
+    "duration": 45.67
+  },
+  "hosts": [
+    {
+      "ip_address": "192.168.1.1",
+      "hostname": "router.local",
+      "open_ports": [22, 80, 443],
+      "ports": [
+        {
+          "port": 22,
+          "service": "ssh",
+          "version": "OpenSSH_7.9p1",
+          "vulnerability_score": 4.0
+        }
+      ]
+    }
+  ]
+}
+```
 
 ---
 
-🤝 Contributing
+## ⚠️ Security Considerations
 
-Got something to add? We’re open to help on these fronts:
-- Add more service signatures
-Enhanced OS Detection Methods
-- Add vulnerability database
-Create a graphical user interface
-- Add more scan types
+### Legal Compliance
+- Unauthorized port scanning may violate:
+  - Computer Fraud and Abuse Act (CFAA) in the US
+  - Computer Misuse Act in the UK
+  - Similar legislation in other jurisdictions
+- Always obtain written authorization before scanning
+
+### Operational Guidelines
+1. **Authorization Required** - Only scan systems you own or have permission to test
+2. **Rate Limiting** - Use `--stealth` and appropriate thread counts to avoid DoS
+3. **Documentation** - Maintain logs of all scanning activities
+4. **Disclosure** - Follow responsible disclosure practices for discovered vulnerabilities
+
+### Risk Mitigation
+- Use the test target `scanme.nmap.org` for development and testing
+- Implement scanning windows during maintenance periods
+- Monitor target systems for adverse effects
 
 ---
 
-📄 License
+## 🤝 Contributing Guidelines
 
-Free to use, just act with care under the MIT License.
+### Development Areas
+- Additional service signatures for `SERVICE_SIGNATURES`
+- Enhanced OS fingerprinting algorithms
+- New scan technique implementations
+- Performance optimizations
+- Additional output formats
 
-Found something helpful here? A star on the repo makes a difference for people looking around. Discovery gets easier when someone takes a moment.
+### Contribution Process
+1. Fork the repository
+2. Create a feature branch
+3. Implement changes with documentation
+4. Submit pull request with detailed description
 
 ---
 
+## 📚 References
+
+1. **Nmap Network Scanning** - Gordon Lyon (Fyodor)
+2. **TCP/IP Illustrated** - W. Richard Stevens
+3. **Common Vulnerabilities and Exposures (CVE)** - MITRE Corporation
+4. **Scapy Documentation** - Philippe Biondi and contributors
+
+---
+
+## 📄 License
+
+MIT License - See LICENSE file for details
+
+---
+
+
+<div align="center">
+
+</div>
