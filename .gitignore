@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+port-scanner-env/
+
+# Distribution
+build/
+dist/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+port_scanner.log
+
+# Output files
+scan_results.json
+scan_results.csv
+scan_report.html
+scan_*.json
+scan_*.csv
+scan_*.html
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Virtual Environment
+venv/
+.env
+.venv
+
+# Test files
+tests/__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Screenshots
+screenshots/
+*.png
+*.jpg
+
+# Large capture files
+*.pcap
+*.pcapng
