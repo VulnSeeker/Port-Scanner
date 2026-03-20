@@ -1,0 +1,17 @@
+# Port Scanner Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core packet manipulation
+scapy>=2.5.0
+
+# Network interface handling
+netifaces>=0.11.0
+
+# Terminal colors
+colorama>=0.4.6
+
+# Nmap integration for OS detection
+python-nmap>=0.7.1
+
+# HTTP requests for banner grabbing
+requests>=2.31.0
